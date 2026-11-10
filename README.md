@@ -42,7 +42,9 @@ Change the threshold with `LOW_QUOTA_THRESHOLD` (percent used, default `80`).
 
 ## Opting out
 
-The hook only nudges code-implementation work; research, analysis, Q&A and design discussion carry on normally.
+Nothing to configure for normal use: the hook only nudges code-implementation work; research, analysis, Q&A and design discussion carry on normally.
+
+To turn it off for a project, just tell Claude ("don't use low-quota mode in this project") or run `/low-quota off`; `/low-quota on` turns it back on. Under the hood that toggles a marker file:
 
 - **Per project:** `mkdir -p .claude && touch .claude/no-low-quota` in the project (any parent directory also counts).
 - **Per session:** start Claude Code with `LOW_QUOTA_DISABLE=1 claude`.

@@ -30,3 +30,6 @@ Goal: keep work moving while spending as little Claude quota as possible.
 5. On `HANDOFF-DONE PR #N`: launch a sonnet-engineer reviewer with: the PR, the author agent's herdr name, what must hold, tests to run, the fix loop (`herdr agent prompt <name> "<findings; fix, push, end with HANDOFF-DONE PR #N>"`, `herdr agent wait <name>`, `herdr agent read <name> --lines 60`), then merge (and deploy per the repo's rules). When two PRs deploy the same component, tell both reviewers to build from the latest main and check live tags first.
 6. After merge: close the herdr pane/tab and remove the worktree.
 7. Report to the user in a few lines per PR.
+
+## Turning it off / on in plain words
+The user should never need to type flags. If the user says anything like "這個專案不要低額度模式", "don't use low-quota here", "turn it off" — create `<project root>/.claude/no-low-quota` (project root = `git rev-parse --show-toplevel`, else cwd) and confirm in one line. If they say "turn it back on", delete that file. `/low-quota off` and `/low-quota on` do the same.
