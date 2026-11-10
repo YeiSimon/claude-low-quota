@@ -40,6 +40,13 @@ cp hooks/low-quota.sh ~/.claude/hooks/ && chmod +x ~/.claude/hooks/low-quota.sh 
 
 Change the threshold with `LOW_QUOTA_THRESHOLD` (percent used, default `80`).
 
+## Opting out
+
+The hook only nudges code-implementation work; research, analysis, Q&A and design discussion carry on normally.
+
+- **Per project:** `mkdir -p .claude && touch .claude/no-low-quota` in the project (any parent directory also counts).
+- **Per session:** start Claude Code with `LOW_QUOTA_DISABLE=1 claude`.
+
 ## License
 
 MIT
