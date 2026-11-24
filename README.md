@@ -40,6 +40,8 @@ cp hooks/low-quota.sh ~/.claude/hooks/ && chmod +x ~/.claude/hooks/low-quota.sh 
 
 Change the threshold with `LOW_QUOTA_THRESHOLD` (percent used, default `80`).
 
+The usage file is rewritten only when the status line renders, so a reading can outlive its window. The hook treats each window as 0% once its `resets_at` time (saved by the status-line snippet) has passed; for files written by older snippets without reset times, a reading older than its window (5 hours / 7 days) is ignored. So the mode turns itself off after the weekly or 5-hour reset, with no manual edit.
+
 ## Opting out
 
 Nothing to configure for normal use: the hook only nudges code-implementation work; research, analysis, Q&A and design discussion carry on normally.
